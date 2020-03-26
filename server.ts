@@ -1,6 +1,9 @@
 /***************************************************************************************************
  * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
  */
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xhr2');
+
 import '@angular/localize/init';
 import 'zone.js/dist/zone-node';
 

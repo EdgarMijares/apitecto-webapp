@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 declare var $: any;
-
 
 @Component({
   selector: 'app-principal',
@@ -26,7 +26,7 @@ export class PrincipalComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        $(document).ready(function() {
+        $(document).ready(() => {
             $('.owl-carousel').owlCarousel({
             loop: true,
             autoplay: true,
@@ -58,7 +58,7 @@ export class PrincipalComponent implements OnInit {
     }
 
     goToCategori() {
-        console.log('click me!')
+        console.log('click me!');
     }
 
 }
