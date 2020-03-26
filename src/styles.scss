@@ -1,1 +1,167 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/scss/bootstrap.scss";
+@import "./assets/sass/now-ui-kit/variables.scss";
+
+/* VARIABLES LOCALES */
+
+$gradient: $warning-color,
+$primary-color;
+$radius: 10px;
+$visual-height: 68%;
+$datas-height: calc(100% - #{$visual-height} + 2px);
+
+/* CSS */
+
+.btn {
+    word-break: break-all !important;
+}
+
+.card-columns {
+    @include media-breakpoint-only(md) {
+        column-count: 2 !important;
+    }
+    @include media-breakpoint-only(lg) {
+        column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+        column-count: 5;
+    }
+}
+
+.card-profile {
+    float: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 300px;
+    background: #fff;
+    border-radius: $radius;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(black, 0.1);
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        bottom: 0;
+        box-shadow: 0 36px 64px -34px rgba(black, 1), 0 16px 14px -14px rgba(black, 0.6), 0 22px 18px -18px rgba(black, 0.4), 0 22px 38px -18px rgba(black, 1);
+        transform: scaleX(0.7) scaleY(1.3) translateY(-15%);
+        z-index: -1;
+        opacity: 0.25;
+    }
+    &_visual {
+        height: $visual-height;
+        overflow: hidden;
+        position: relative;
+        // background: linear-gradient(to bottom, darken(#545559, 10%), saturate(darken(#3A4A7B, 2%), 20%), saturate(darken(#3A4A7B, 15%), 20%));
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+    }
+    &_user-infos {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: calc(#{$visual-height} + 38px);
+        color: #fff;
+        text-align: center;
+        a {
+            width: 64px;
+            height: 64px;
+            font-size: 2em;
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: {
+                color: $primary-color;
+            }
+            display: block;
+            clear: both;
+            margin: auto;
+            border-radius: 100%;
+            top: calc(500% - 70px);
+            box-shadow: 0 2px 0 $primary-color,
+            0 3px 10px rgba($primary-color, 0.15),
+            0 0px 10px rgba($primary-color, 0.15),
+            0 0px 4px rgba(darken($primary-color, 80%), 0.35),
+            0 5px 20px rgba($primary-color, 0.25),
+            0 15px 40px rgba($primary-color, 0.75),
+            inset 0 0 15px rgba(#FFFFFF, 0.05);
+            overflow: hidden;
+            &:after {
+                content: '';
+                font-style: normal;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: block;
+                background: {
+                    image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/64/icon-add-f.svg");
+                    repeat: no-repeat;
+                    size: 30%;
+                    position: center center;
+                }
+                left: 0;
+                top: 0;
+            }
+        }
+        .infos_name,
+        .infos_nick {
+            color: $primary-color;
+            display: block;
+            clear: both;
+            padding: .5em 0;
+            padding-top: 0;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            top: 8px;
+            font-weight: 800;
+        }
+        .infos_nick {
+            top: 32px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+    &_user-stats {
+        background: #fff;
+        float: left;
+        width: 100%;
+        height: $datas-height;
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+        .stats-holder {
+            position: absolute;
+            width: 100%;
+            top: calc( 70% + 3em);
+            display: flex;
+        }
+        .user-stats {
+            flex: 1;
+            text-align: center;
+            strong {
+                display: block;
+                float: left;
+                clear: both;
+                width: 100%;
+                color: #B3B1B2;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: -0.2px;
+            }
+            span {
+                font-size: 26px;
+                color: #5E5E5E;
+                padding: .18em 0;
+                display: inline-block;
+            }
+        }
+    }
+}

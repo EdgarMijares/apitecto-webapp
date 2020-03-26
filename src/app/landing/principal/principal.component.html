@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div class="page-header clear-filter" filter-color="yellow">
+        <div class="page-header-image rellax-header" data-rellax-speed="-7" style="background-image: url('./assets/img/bg/login.jpg');">
+        </div>
+        <div class="container">
+            <div class="content-center brand">
+                <img class="n-logo" src="./assets/img/logo/blue-logo.png" alt="">
+                <h1 class="h1-seo">¿Qué quieres arreglar?</h1>
+                <!-- <h3>Nos encargamos del resto.</h3> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mt-4 mb-0">
+            <h2 class="col-12 text-center mb-0">SERVICIOS</h2>
+        </div>
+        <div class="owl-carousel owl-theme">
+            <div style="height: 360px;" *ngFor="let categoria of categorias">
+                <div class="card-profile">
+                    <div class="card-profile_visual" [ngStyle]="{'background':'url(' + categoria.image + ') no-repeat center center/cover'}"></div>
+                    <div class="card-profile_user-infos">
+                        <span class="infos_name">{{ categoria.name }}</span>
+                        <a [routerLink]="categoria.path"> </a>
+                    </div>
+                    <div class="card-profile_user-stats">
+                        <div class="stats-holder">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
