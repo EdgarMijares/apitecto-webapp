@@ -13,15 +13,15 @@ export class PrincipalComponent implements OnInit {
     focus1;
     categorias: any = [
         { name: 'Arquitectura', image: './assets/img/icon/arquitectura.png', path: ['/categoria', 'arquitectura'] },
-        { name: 'Carpinteria',  image: './assets/img/icon/carpinteria.png',  path: ['/categoria', 'carpinteria'] },
         { name: 'Construcción', image: './assets/img/icon/construccion.png', path: ['/categoria', 'construccion'] },
-        { name: 'Cristaleria',  image: './assets/img/icon/cristaleria.png',  path: ['/categoria', 'cristaleria'] },
         { name: 'Electricidad', image: './assets/img/icon/electricidad.png', path: ['/categoria', 'electricidad'] },
-        { name: 'Herreria',     image: './assets/img/icon/herreria.png',     path: ['/categoria', 'herreria'] },
+        { name: 'Carpinteria',  image: './assets/img/icon/carpinteria.png',  path: ['/categoria', 'carpinteria'] },
+        { name: 'Cristaleria',  image: './assets/img/icon/cristaleria.png',  path: ['/categoria', 'cristaleria'] },
         { name: 'Interiores',   image: './assets/img/icon/interiores.png',   path: ['/categoria', 'interiores'] },
-        { name: 'Pintura',      image: './assets/img/icon/pintura.png',      path: ['/categoria', 'pintura'] },
+        { name: 'Herreria',     image: './assets/img/icon/herreria.png',     path: ['/categoria', 'herreria'] },
         { name: 'Plomeria',     image: './assets/img/icon/plomeria.png',     path: ['/categoria', 'plomeria'] },
-    ]
+        { name: 'Pintura',      image: './assets/img/icon/pintura.png',      path: ['/categoria', 'pintura'] },
+    ];
 
     constructor() { }
 

@@ -11,28 +11,28 @@
                 }
             },
             "root": "",
-            "sourceRoot": "src",
+            "sourceRoot": "./src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "outputPath": "dist/apitecto-webapp/browser",
-                        "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "index": "./src/index.html",
+                        "main": "./src/main.ts",
+                        "polyfills": "./src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "aot": true,
                         "assets": [
-                            "src/assets",
-                            "src/favicon.ico",
-                            "src/manifest.webmanifest"
+                            "./src/assets",
+                            "./src/favicon.ico",
+                            "./src/manifest.webmanifest"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "src/assets/sass/now-ui-kit.scss",
-                            "src/assets/css/demo.css",
-                            "node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
+                            "./src/styles.scss",
+                            "./src/assets/sass/now-ui-kit.scss",
+                            "./src/assets/css/demo.css",
+                            "./node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
                         ],
                         "scripts": [
                             "node_modules/rellax/rellax.min.js",
@@ -42,8 +42,8 @@
                     "configurations": {
                         "production": {
                             "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.prod.ts"
+                                "replace": "./src/environments/environment.ts",
+                                "with": "./src/environments/environment.prod.ts"
                             }],
                             "optimization": true,
                             "outputHashing": "all",
@@ -89,17 +89,17 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "main": "./src/test.ts",
+                        "polyfills": "./src/polyfills.ts",
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": [
-                            "src/favicon.ico",
-                            "src/assets",
-                            "src/manifest.webmanifest"
+                            "./src/favicon.ico",
+                            "./src/assets",
+                            "./src/manifest.webmanifest"
                         ],
                         "styles": [
-                            "src/styles.scss"
+                            "./src/styles.scss"
                         ],
                         "scripts": []
                     }
@@ -140,8 +140,8 @@
                         "production": {
                             "outputHashing": "media",
                             "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.prod.ts"
+                                "replace": "./src/environments/environment.ts",
+                                "with": "./src/environments/environment.prod.ts"
                             }],
                             "sourceMap": false,
                             "optimization": true
