@@ -1,11 +1,30 @@
 <div class="wrapper">
-    <div class="page-header page-header-small">
-        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('./assets/img/bg/login.jpg');">
+    <div class="page-header page-header-xs" filter-color="yellow">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" [ngStyle]="{'background':'url(' + categoria.cover + ') no-repeat center center/cover'}">
         </div>
         <div class="container">
             <div class="content-center">
-                <h1 class="title">{{ name }}.</h1>
+                <h1 class="title mb-0">{{ categoria.name }}</h1>
+                <!-- <h4 class="header-slogan">No construimos tu sueño,<br>pero conocemos a quien si.</h4> -->
+            </div>
+        </div>
+    </div>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-6">
+                <button type="button" (click)="selectionList('todos')" class="btn btn-primary btn-round btn-simple col-12 mx-0"><i class="fa fa-list mr-2"></i> Todos</button>
+            </div>
+            <div class="col-6">
+                <button type="button" (click)="selectionList('popular')" class="btn btn-primary btn-round btn-simple col-12 mx-0"><i class="fa fa-star mr-2"></i> Mas populares</button>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-12" *ngIf="selection === 'todos'">
+                All
+            </div>
 
+            <div class="col-12" *ngIf="selection === 'popular'">
+                Populares
             </div>
         </div>
     </div>

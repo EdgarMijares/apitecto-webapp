@@ -57,11 +57,19 @@
             color: #FFFFFF;
             width: 100%;
             max-width: 880px;
+            >.header-slogan {
+                margin: 0;
+                color: $default-color-opacity;
+            }
         }
     }
     .category,
     .description {
         color: $opacity-5;
+    }
+    &.page-header-xs {
+        min-height: 20vh;
+        max-height: 400px;
     }
     &.page-header-small {
         min-height: 60vh;
