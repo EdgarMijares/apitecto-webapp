@@ -1,5 +1,8 @@
 {
     "name": "functions",
+    "engines": {
+        "node": "8"
+    },
     "scripts": {
         "lint": "tslint --project tsconfig.json",
         "build": "node cp-angular && tsc",
@@ -8,9 +11,6 @@
         "start": "npm run shell",
         "deploy": "firebase deploy --only functions",
         "logs": "firebase functions:log"
-    },
-    "engines": {
-        "node": "8"
     },
     "main": "lib/index.js",
     "dependencies": {

@@ -1,18 +1,35 @@
 # ApitectoWebapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+This project include [Angular Universal](https://angular.io/guide/universal) version 9.0.2.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Development ssr server
+
+Run `npm run build:ssr && npm run serve:ssr` for a dev ssr server. Navigate to `http://localhost:4000/`.
+
+## Development firebase server
+
+Run `firebase serve` for a dev ssr server. Navigate to `http://localhost:4000/`.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Build angular
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Build ssr
+
+Run `npm run build:ssr` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Build firebase
+
+Run `firebase build` to build the project.
 
 ## Running unit tests
 
@@ -25,3 +42,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Deploy build to server
+
+1. `npm run build:ssr`
+2. `cd function`
+3. `npm run build`
+4. `firebase deploy`
