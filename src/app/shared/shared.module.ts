@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { FlatFooterComponent } from './flat-footer/flat-footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotWorkComponent } from './not-work/not-work.component';
+import { NavbarLoginComponent } from './navbar-login/navbar-login.component';
 
 @NgModule({
     declarations: [
         FlatFooterComponent,
         NavbarComponent,
-        NotWorkComponent
+        NotWorkComponent,
+        NavbarLoginComponent
     ],
     imports: [
         CommonModule,
@@ -19,7 +21,8 @@ import { NotWorkComponent } from './not-work/not-work.component';
     exports: [
         FlatFooterComponent,
         NavbarComponent,
-        NotWorkComponent
+        NotWorkComponent,
+        NavbarLoginComponent
     ]
 })
 

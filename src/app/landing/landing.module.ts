@@ -14,10 +14,11 @@ import { PrincipalComponent } from './principal/principal.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { environment } from '../../environments/environment';
 import { CategoriasComponent } from './categorias/categorias.component';
+import { LandingComponent } from './landing.component';
 
 
 @NgModule({
-    declarations: [PrincipalComponent, UserProfileComponent, CategoriasComponent],
+    declarations: [PrincipalComponent, UserProfileComponent, CategoriasComponent, LandingComponent],
     imports: [
         CommonModule,
         SharedModule,

@@ -20,7 +20,40 @@
         </div>
         <div class="row my-4">
             <div class="col-12" *ngIf="selection === 'todos'">
-                All
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                        <div class="profile">
+                            <div class="photo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/764024/profile/profile-512.jpg" /></div>
+                            <div class="content">
+                                <div class="text">
+                                    <h3>Jorge Antuna</h3>
+                                    <h6>Arquitecto</h6>
+                                    <h6 class="mt-2">
+                                        <i class="mr-1 fa fa-star" aria-hidden="true"></i>
+                                        <i class="mr-1 fa fa-star" aria-hidden="true"></i>
+                                        <i class="mr-1 fa fa-star" aria-hidden="true"></i>
+                                        <i class="mr-1 fa fa-star" aria-hidden="true"></i>
+                                        <i class="mr-1 fa fa-star-half" aria-hidden="true"></i>
+                                    </h6>
+                                </div>
+                                <!-- <div class="btn"><span></span></div> -->
+                                <div class="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="profile">
+                            <div class="photo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/764024/profile/profile-512.jpg" /></div>
+                            <div class="content">
+                                <div class="text">
+                                    <h3>Jorge Antuna</h3>
+                                    <h6>Arquitecto</h6>
+                                </div>
+                                <div class="btn"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-12" *ngIf="selection === 'popular'">

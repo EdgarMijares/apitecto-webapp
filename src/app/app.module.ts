@@ -31,7 +31,7 @@ import { LandingModule } from './landing/landing.module';
         NgbModule,
         FormsModule,
         RouterModule,
-        AppRoutingModule,
+        // AppRoutingModule,
         ComponentsModule,
         ExamplesModule,
         LoginModule,

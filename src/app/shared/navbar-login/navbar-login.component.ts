@@ -2,11 +2,11 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: []
+  selector: 'app-navbar-login',
+  templateUrl: './navbar-login.component.html',
+  styles: []
 })
-export class NavbarComponent implements OnInit {
+export class NavbarLoginComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
@@ -16,9 +17,9 @@ import { IniciarComponent } from './iniciar/iniciar.component';
 
 @NgModule({
     declarations: [
+        IniciarComponent,
         LoginComponent,
-        NuevoComponent,
-        IniciarComponent
+        NuevoComponent
     ],
     imports: [
         CommonModule,
@@ -27,6 +28,7 @@ import { IniciarComponent } from './iniciar/iniciar.component';
         FormsModule,
         NgbModule,
         NouisliderModule,
+        RouterModule,
         JwBootstrapSwitchNg2Module,
         AgmCoreModule.forRoot({
             apiKey: 'YOUR_KEY_HERE'
