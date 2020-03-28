@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 
+import { AngularFireModule } from '@angular/fire';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -31,7 +32,7 @@ import { LandingModule } from './landing/landing.module';
         NgbModule,
         FormsModule,
         RouterModule,
-        // AppRoutingModule,
+        AngularFireModule,
         ComponentsModule,
         ExamplesModule,
         LoginModule,
