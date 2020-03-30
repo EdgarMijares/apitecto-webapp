@@ -1,6 +1,6 @@
 {
     "name": "apitecto-webapp",
-    "short_name": "apitecto-webapp",
+    "short_name": "Apitecto",
     "theme_color": "#1976d2",
     "background_color": "#fafafa",
     "display": "standalone",
@@ -43,8 +43,8 @@
             "purpose": "maskable"
         },
         {
-            "src": "assets/icons/icon-384x384.png",
-            "sizes": "384x384",
+            "src": "assets/icons/icon-256x256.png",
+            "sizes": "256x256",
             "type": "image/png",
             "purpose": "maskable"
         },
