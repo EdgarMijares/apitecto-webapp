@@ -13,7 +13,7 @@ Run `npm run build:ssr && npm run serve:ssr` for a dev ssr server. Navigate to `
 
 ## Development firebase server
 
-Run `firebase serve` for a dev ssr server. Navigate to `http://localhost:4000/`.
+Run `firebase serve` for a dev ssr server. Navigate to `http://localhost:5000/`.
 
 ## Code scaffolding
 
