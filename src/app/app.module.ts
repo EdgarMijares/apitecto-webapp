@@ -19,6 +19,7 @@ import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { LandingModule } from './landing/landing.module';
         LoginModule,
         LandingModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        DashboardModule
     ],
     providers: [],
     bootstrap: [AppComponent]
