@@ -1,0 +1,62 @@
+<footer class="page-footer font-small bg-warning pt-4">
+    <div class="container text-center text-md-left">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <img class="px-5 mt-3 mb-4" src="./assets/img/logo/blue-name.png" alt="">
+                <p class="text-center">
+                    ¿QUÉ QUIERES ARREGLAR? <br> Nosotros arreglamos todo... bueno casi todo!
+                </p>
+                <p class="text-center">
+                    ¿QUÉ QUIERES MEJORAR? <br> Nosotros mejoramos todo... bueno casi todo!
+                </p>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-2 mx-auto">
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Categorias</h5>
+                <ul class="list-unstyled">
+                    <li *ngFor="let categoria of categorias">
+                        <a class="label-primary nav-link p-0" [routerLink]="categoria.path">{{ categoria.name }}</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-3 mx-auto">
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Enlaces útiles</h5>
+                <ul class="list-unstyled">
+                    <li><a class="label-primary nav-link p-0" href="#!">Contacto</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#!">Registro</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#!">Iniciar sesion</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#!">Acerca de nosotros</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#!">Aviso de privacidad</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#!">Ayuda</a></li>
+                </ul>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-2 mx-auto">
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Redes</h5>
+                <ul class="list-unstyled">
+                    <li><a class="label-primary nav-link p-0" href="#">Facebook</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#">Instagram</a></li>
+                    <li><a class="label-primary nav-link p-0" href="#">Linkedin</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <ul class="list-unstyled list-inline text-center py-2">
+        <li class="list-inline-item">
+            <h5 class="mb-1">Registrate</h5>
+        </li>
+        <li class="list-inline-item">
+            <a href="#!" class="btn btn-primary btn-round">Registrarse</a>
+        </li>
+    </ul>
+
+    <hr>
+
+    <div class="footer-copyright text-center py-3">
+        © {{ date }} Code by <a href="http://pssoftware.com.mx/"> Progress System Software</a>. Designed by <a href="http://dos17.com/"> DOS17</a>
+    </div>
+
+</footer>
