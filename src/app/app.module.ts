@@ -33,6 +33,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
         NgbModule,
         FormsModule,
         RouterModule,
+        AppRoutingModule,
         AngularFireModule,
         ComponentsModule,
         ExamplesModule,

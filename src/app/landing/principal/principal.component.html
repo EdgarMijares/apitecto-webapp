@@ -11,22 +11,40 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="row mt-4 mb-0">
             <h2 class="col-12 text-center mb-0">CATEGORIAS</h2>
-        </div>
-        <div class="owl-carousel owl-theme">
-            <div style="height: 360px;" *ngFor="let categoria of categorias">
-                <div class="card-profile">
-                    <div class="card-profile_visual" [ngStyle]="{'background':'url(' + categoria.image + ') no-repeat center center/cover'}"></div>
-                    <div class="card-profile_user-infos">
-                        <span class="infos_name">{{ categoria.name }}</span>
-                        <a [routerLink]="categoria.path"> </a>
-                    </div>
-                    <div class="card-profile_user-stats">
-                        <div class="stats-holder">
+            <div class="owl-carousel owl-theme">
+                <div style="height: 390px;" *ngFor="let categoria of categorias">
+                    <div class="card-profile">
+                        <div class="card-profile_visual" [ngStyle]="{'background':'url(' + categoria.image + ') no-repeat center center/cover'}"></div>
+                        <div class="card-profile_user-infos">
+                            <span class="infos_name">{{ categoria.name }}</span>
+                            <a [routerLink]="categoria.path"> </a>
+                        </div>
+                        <div class="card-profile_user-stats">
+                            <div class="stats-holder">
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-4 col-12 col-md-6">
+                <div class="row">
+                    <h3 class="col-12 text-center mb-0">Contratistas destacados</h3>
+                    <app-card-user class="col-12"></app-card-user>
+                    <app-card-user class="col-12"></app-card-user>
+                    <app-card-user class="col-12"></app-card-user>
+                </div>
+            </div>
+            <div class="mb-4 col-12 col-md-6">
+                <div class="row">
+                    <h3 class="col-12 text-center mb-0">Mejor valorados</h3>
+                    <app-card-user class="col-12"></app-card-user>
+                    <app-card-user class="col-12"></app-card-user>
+                    <app-card-user class="col-12"></app-card-user>
                 </div>
             </div>
         </div>

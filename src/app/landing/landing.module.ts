@@ -10,11 +10,13 @@ import { AgmCoreModule } from '@agm/core';
 import { LandingRoutingModule } from './landing-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
+import { environment } from '../../environments/environment';
+
 import { PrincipalComponent } from './principal/principal.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { environment } from '../../environments/environment';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { LandingComponent } from './landing.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { LandingComponent } from './landing.component';
     imports: [
         CommonModule,
         SharedModule,
+        ComponentsModule,
         LandingRoutingModule,
         FormsModule,
         NgbModule,

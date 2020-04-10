@@ -16,7 +16,8 @@
 
 */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink";
 @import "core/variables";
 @import "core/mixins";
 @import "~bootstrap/scss/bootstrap";
@@ -29,7 +30,7 @@
 @import "core/images";
 @import "core/navbar";
 @import "core/alerts";
-@import "core/type";
+// @import "core/type";
 @import "core/tabs";
 @import "core/tooltip";
 @import "core/popover";
@@ -50,4 +51,5 @@
 @import "core/plugins/chartist";
 @import "core/plugins/perfect-scrollbar";
 @import "core/responsive";
-@import "core/angular-modal.scss";
+// @import "core/angular-modal.scss";
+@import "core/angular-modal"
