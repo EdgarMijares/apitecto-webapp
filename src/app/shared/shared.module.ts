@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotWorkComponent } from './not-work/not-work.component';
 import { NavbarLoginComponent } from './navbar-login/navbar-login.component';
 import { FullFooterComponent } from './full-footer/full-footer.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { FullFooterComponent } from './full-footer/full-footer.component';
         NavbarComponent,
         NotWorkComponent,
         NavbarLoginComponent,
-        FullFooterComponent
+        FullFooterComponent,
+        NavbarAdminComponent
     ],
     imports: [
         CommonModule,
@@ -34,7 +36,9 @@ import { FullFooterComponent } from './full-footer/full-footer.component';
         NavbarComponent,
         NotWorkComponent,
         NavbarLoginComponent,
-        FullFooterComponent
+        FullFooterComponent,
+        NavbarAdminComponent,
+        RouterModule
     ]
 })
 
