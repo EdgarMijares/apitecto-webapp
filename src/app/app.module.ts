@@ -20,6 +20,10 @@ import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+import { BaseURInterceptor, HttpErrorInterceptor } from './interceptor/intercepeptor.class';
 
 @NgModule({
     declarations: [
@@ -42,7 +46,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
         BrowserAnimationsModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
-    providers: [],
+    providers: [
+        // INTERCEPTORS
+        { provide: HTTP_INTERCEPTORS, useClass: BaseURInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
