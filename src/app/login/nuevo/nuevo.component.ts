@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { UserModel } from '../../models/models';
+import { AuthService } from '../../service/service';
 
 @Component({
   selector: 'app-nuevo',
@@ -7,27 +11,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoComponent implements OnInit {
 
-  data: Date = new Date();
-  focus;
-  focus1;
+    data: Date = new Date();
 
-  constructor() { }
+    user: UserModel;
 
-  ngOnInit() {
-      const body = document.getElementsByTagName('body')[0];
-      body.classList.add('login-page');
+    password: string;
+    password_confirm: string
 
-      const navbar = document.getElementsByTagName('nav')[0];
-      navbar.classList.add('navbar-transparent');
-  }
+    constructor( private authService: AuthService) { }
 
-  // tslint:disable-next-line: use-life-cycle-interface
-  ngOnDestroy() {
-      const body = document.getElementsByTagName('body')[0];
-      body.classList.remove('login-page');
+    ngOnInit() {
+        this.user = new UserModel();
 
-      const navbar = document.getElementsByTagName('nav')[0];
-      navbar.classList.remove('navbar-transparent');
-  }
+        const body = document.getElementsByTagName('body')[0];
+        body.classList.add('login-page');
+
+        const navbar = document.getElementsByTagName('nav')[0];
+        navbar.classList.add('navbar-transparent');
+    }
+
+    // tslint:disable-next-line: use-life-cycle-interface
+    ngOnDestroy() {
+        const body = document.getElementsByTagName('body')[0];
+        body.classList.remove('login-page');
+
+        const navbar = document.getElementsByTagName('nav')[0];
+        navbar.classList.remove('navbar-transparent');
+    }
+
+    setDataLogin( form: NgForm ) {
+        if ( !form.pristine && this.password === this.password_confirm ) {
+            console.log( form );
+            this.user.password = this.password;
+            console.log(this.user);
+            this.authService.createUser( this.user );
+        }
+        // console.log(this.password);
+        // console.log(this.password_confirm);
+        
+    }
 
 }

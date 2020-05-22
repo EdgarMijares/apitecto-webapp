@@ -10,10 +10,13 @@ export class BaseURInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         if (!req.url.match(/^http(s)?:\/\/(.*)$/)) {
-            const url = `${environment.baseURL}${req.url}`.replace(/([^:]\/)\/+/g, '$1');
+            const url = `${ environment.baseURL }${ req.url }`.replace(/([^:]\/)\/+/g, '$1');
 
-            req = req.clone({ url });
+            req = req.clone({ url });            
         }
+
+        console.log(req);
+        
         return next.handle(req);
     }
 }

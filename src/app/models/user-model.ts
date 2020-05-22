@@ -11,9 +11,9 @@ export class UserModel {
     lastname_m: string;
     direccion: string;
     email: string;
-    phone: Phone[];
+    phone: [];
     website: string;
-    social: Social;
+    social: [];
     id_portfolio: string;
     password: string;
 }

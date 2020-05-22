@@ -1,6 +1,7 @@
 export const environment = {
     production: true,
     apiMapsKey: 'AIzaSyA5w7bYuyN26jUPfvZpCG3YXwptolauY9M',
+    baseURL: 'http://localhost:4200',
     firebaseConfig: {
         apiKey: 'AIzaSyA5w7bYuyN26jUPfvZpCG3YXwptolauY9M',
         authDomain: 'apitecto-d77cd.firebaseapp.com',

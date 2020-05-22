@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { ErrorModel, UserModel } from '../../models/models'
+import { AuthService } from '../../service/service';
 
 @Component({
   selector: 'app-iniciar',
@@ -6,28 +10,44 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class IniciarComponent implements OnInit {
-  data: Date = new Date();
-  focus;
-  focus1;
+    data: Date = new Date();
 
-  constructor() { }
+    user: UserModel;
+    error: ErrorModel;
 
-  ngOnInit() {
-      const body = document.getElementsByTagName('body')[0];
-      body.classList.add('login-page');
+    constructor( private authService: AuthService ) { }
 
-      const navbar = document.getElementsByTagName('nav')[0];
-      navbar.classList.add('navbar-transparent');
-  }
+    ngOnInit() {
+        this.user = new UserModel();
 
-  // tslint:disable-next-line: use-life-cycle-interface
-  ngOnDestroy() {
-      const body = document.getElementsByTagName('body')[0];
-      body.classList.remove('login-page');
+        const body = document.getElementsByTagName('body')[0];
+        body.classList.add('login-page');
 
-      const navbar = document.getElementsByTagName('nav')[0];
-      navbar.classList.remove('navbar-transparent');
-  }
+        const navbar = document.getElementsByTagName('nav')[0];
+        navbar.classList.add('navbar-transparent');
+
+        // this.userModel.email = 'test@test.com';
+    }
+
+    // tslint:disable-next-line: use-life-cycle-interface
+    ngOnDestroy() {
+        const body = document.getElementsByTagName('body')[0];
+        body.classList.remove('login-page');
+
+        const navbar = document.getElementsByTagName('nav')[0];
+        navbar.classList.remove('navbar-transparent');
+    }
+
+    setDataLogin( form: NgForm ) {
+        if (form.invalid) { return; }
+        
+        if ( !form.control.pristine ) {
+            console.log(this.user);
+            console.log(form);
+            this.authService.loginUser( this.user )
+        }
+        
+    }
 
 
 }
