@@ -1,9 +1,9 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { TokenUserInterceptor } from './token-user.interceptor';
-import { UniversalInterceptorService } from './universal-interceptor.service';
 import { BaseURInterceptor } from './base-url.interceptor';
+import { TokenUserInterceptor } from './token-user.interceptor';
 import { HttpErrorInterceptor } from './http-error.interceptor';
+import { UniversalInterceptorService } from './universal-interceptor.service';
 
 export const InterceptorProviders = [
     { provide: HTTP_INTERCEPTORS, useClass: BaseURInterceptor, multi: true },

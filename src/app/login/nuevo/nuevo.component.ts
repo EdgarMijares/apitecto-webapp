@@ -41,13 +41,9 @@ export class NuevoComponent implements OnInit {
 
     setDataLogin( form: NgForm ) {
         if ( !form.pristine && this.password === this.password_confirm ) {
-            console.log( form );
             this.user.password = this.password;
-            console.log(this.user);
             this.authService.createUser( this.user );
         }
-        // console.log(this.password);
-        // console.log(this.password_confirm);
         
     }
 

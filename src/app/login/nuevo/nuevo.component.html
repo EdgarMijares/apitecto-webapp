@@ -31,7 +31,7 @@
                             <input type="password" placeholder="Confirmar contraseña" class="form-control" 
                                 name="password_confirm" [(ngModel)]="password_confirm" required minlength="6" autocomplete="off"/>
                         </div>
-                        <span class="badge badge-danger" *ngIf="userLoginForm.submitted && userLoginForm.controls['password'] !== userLoginForm.controls['password_confirm']">Las contraseñas no coinciden</span>
+                        <!-- <span class="badge badge-danger" *ngIf="userLoginForm.submitted && userLoginForm.controls['password'] !== userLoginForm.controls['password_confirm']">Las contraseñas no coinciden</span> -->
 
                     </div>
                     <div class="mb-5 text-center">

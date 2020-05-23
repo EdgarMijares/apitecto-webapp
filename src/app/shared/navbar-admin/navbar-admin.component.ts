@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+
+import { AuthService } from '../../service/service';
 
 @Component({
   selector: 'app-navbar-admin',
@@ -11,7 +14,7 @@ export class NavbarAdminComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element: ElementRef) {
+    constructor(public location: Location, private element: ElementRef, private authService: AuthService) {
         this.sidebarVisible = false;
     }
 
@@ -47,6 +50,10 @@ export class NavbarAdminComponent implements OnInit {
         } else {
             this.sidebarClose();
         }
+    }
+
+    logOutSession() {
+        this.authService.logOutUser();
     }
 
 }

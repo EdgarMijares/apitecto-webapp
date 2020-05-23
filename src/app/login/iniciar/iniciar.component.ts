@@ -25,8 +25,6 @@ export class IniciarComponent implements OnInit {
 
         const navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
-
-        // this.userModel.email = 'test@test.com';
     }
 
     // tslint:disable-next-line: use-life-cycle-interface
@@ -42,8 +40,6 @@ export class IniciarComponent implements OnInit {
         if (form.invalid) { return; }
         
         if ( !form.control.pristine ) {
-            console.log(this.user);
-            console.log(form);
             this.authService.loginUser( this.user )
         }
         
