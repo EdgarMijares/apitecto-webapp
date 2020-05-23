@@ -19,6 +19,10 @@ export class LocalStorageService {
         return (localStorage.getItem(KEY)) ? localStorage.getItem(KEY) : '';
     }
 
+    getLocalStorageObject( KEY: string ) {
+        return (localStorage.getItem('token')) ? JSON.parse(localStorage.getItem('token')): '';
+    }
+
     saveLocalStorageObject( KEY: string, OBJECT: any ) {
         localStorage.setItem(KEY, JSON.stringify(OBJECT));
     }

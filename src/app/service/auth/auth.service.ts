@@ -46,8 +46,8 @@ export class AuthService {
         this.authUser.auth.createUserWithEmailAndPassword(user.email, user.password)
         .then( userStatus => {
             this.dataSave.saveUserDataBase(userStatus.user.uid, user);
-            userStatus.user.getIdToken().then( data => {
-                this.localSave.saveLocalStorage('token', data)
+            userStatus.user.getIdTokenResult().then( data => {
+                this.localSave.saveLocalStorageObject('token', data)
             })
             this.route.navigate(['/dashboard']);
         })
@@ -57,13 +57,13 @@ export class AuthService {
     }
 
     /**
-     * @var getIdToken Get token to save session
+     * @var getIdTokenResult Get token to save session
      */
     loginUser( user: UserModel ) {
         this.authUser.auth.signInWithEmailAndPassword(user.email, user.password)
         .then( userStatus => {
-            userStatus.user.getIdToken().then( data => {
-                this.localSave.saveLocalStorage('token', data)
+            userStatus.user.getIdTokenResult().then( data => {
+                this.localSave.saveLocalStorageObject('token', data)
             })
             this.route.navigate(['/dashboard']);
         })
@@ -75,8 +75,8 @@ export class AuthService {
     logOutUser() {
         this.authUser.auth.signOut()
         .then(() => {
-            this.localSave.removeLocalStorage('token');
             this.userUID = '';
+            this.localSave.removeLocalStorage('token');
             this.route.navigate(['/login', 'ingresar']);
         })
         .catch( err => {
@@ -85,7 +85,26 @@ export class AuthService {
     }
 
     getUserID() {
-        return this.userUID;
+        const token = this.localSave.getLocalStorageObject('token');
+
+        return token.claims.user_id;
     }
 
+    userStatus() {
+        const token = this.localSave.getLocalStorageObject('token');
+
+        if ( token ) {
+            if ( token.token.lenght < 10 ) {
+                 return false
+            }
+    
+            if(new Date(token.expirationTime) > new Date()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false
+        }
+    }
 }

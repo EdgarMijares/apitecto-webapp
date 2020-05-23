@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { ErrorModel, UserModel } from '../../models/models'
 import { AuthService } from '../../service/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-iniciar',
@@ -15,7 +16,11 @@ export class IniciarComponent implements OnInit {
     user: UserModel;
     error: ErrorModel;
 
-    constructor( private authService: AuthService ) { }
+    constructor( private authService: AuthService, private router: Router ) {
+        if ( this.authService.userStatus() ) {
+            this.router.navigate(['/dashboard'])
+        }
+    }
 
     ngOnInit() {
         this.user = new UserModel();
