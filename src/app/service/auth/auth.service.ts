@@ -1,3 +1,10 @@
+/**
+ * AUTH SERVICE MANAGEMENT
+ * 
+ * @author Edgar Mijares
+ * @version 0.0.2
+ * 
+*/
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,9 +21,6 @@ import { LocalStorageService } from '../local-storage.service';
 
 export class AuthService {
 
-    /** @var string return UID to user login */
-    public userUID = '';
-    
     /**
      * @param errorMessage Shows message to user
      * @param dataSave Send data to service then save.
@@ -26,13 +30,6 @@ export class AuthService {
             private dataSave: DataSaveService, 
             private localSave: LocalStorageService,
             private route: Router ) {
-        this.authUser.authState.subscribe( user => {
-            try {
-                this.userUID = user.uid;
-            } catch (error) {
-                this.userUID = '';
-            }
-        })
     }
 
     /**
@@ -72,24 +69,35 @@ export class AuthService {
         });
     }
 
+    /**
+     * @function signOut() for firebase, end session and delete user data.
+     */
     logOutUser() {
         this.authUser.auth.signOut()
         .then(() => {
-            this.userUID = '';
             this.localSave.removeLocalStorage('token');
-            this.route.navigate(['/login', 'ingresar']);
         })
         .catch( err => {
             this.errorMessage.showUserErrorMessageAuthService(err.code)
-        });
+        })
+        .finally(() => {
+            this.route.navigate(['/login']);
+        })
     }
 
+    /**
+     * @returns user_id
+     */
     getUserID() {
         const token = this.localSave.getLocalStorageObject('token');
 
         return token.claims.user_id;
     }
 
+    /**
+     * @returns boolean
+     * Get token in localstorage, then check if session doesn't expire.
+     */
     userStatus() {
         const token = this.localSave.getLocalStorageObject('token');
 
@@ -101,6 +109,7 @@ export class AuthService {
             if(new Date(token.expirationTime) > new Date()) {
                 return true;
             } else {
+                this.logOutUser();
                 return false;
             }
         } else {

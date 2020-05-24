@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { UserModel } from '../../models/user-model';
 
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/service/service';
+
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -15,7 +18,9 @@ export class ProfileComponent implements OnInit {
 
     userModel: UserModel;
 
-    constructor() { }
+    closeResult: string;
+
+    constructor(private authService: AuthService, private modalService: NgbModal) { }
   
     ngOnInit() {
         this.userModel = new UserModel();
@@ -44,7 +49,7 @@ export class ProfileComponent implements OnInit {
         this.croppedImage = event.base64;
 
         //Usage example:
-        var file = this.dataURLtoFile(this.croppedImage,'image.png');
+        var file = this.dataURLtoFile(this.croppedImage, `${ this.authService.getUserID() }.png`);
         console.log(file);
         this.file = file;
     }
@@ -72,6 +77,38 @@ export class ProfileComponent implements OnInit {
 
     loadImageFailed() {
         // show message
-        console.log('fffff')
+        // console.log('fffff')
+    }
+
+    /**
+     * 
+     * @param content 
+     * @param type 
+     */
+    open(content, type) {
+        if (type === 'sm') {
+            console.log('aici');
+            this.modalService.open(content, { size: 'sm' }).result.then((result) => {
+                this.closeResult = `Closed with: ${result}`;
+            }, (reason) => {
+                this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            });
+        } else {
+            this.modalService.open(content).result.then((result) => {
+                this.closeResult = `Closed with: ${result}`;
+            }, (reason) => {
+                this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            });
+        }
+    }
+
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return  `with: ${reason}`;
+        }
     }
 }

@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~bootstrap/scss/bootstrap.scss";
+// @import "~bootstrap/scss/_functions.scss";
+// @import "~bootstrap/scss/_root.scss";
+// @import "~bootstrap/scss/_mixins.scss";
+// @import "~bootstrap/scss/_reboot.scss";
+// @import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/bootstrap";
 @import "./assets/sass/now-ui-kit/variables.scss";
 @import "./assets/css/card-user.scss";
 
@@ -187,5 +192,9 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
     & label img {
         cursor: pointer;
     }
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
 }
 

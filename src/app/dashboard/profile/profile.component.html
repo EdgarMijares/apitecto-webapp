@@ -1,14 +1,51 @@
 <div class="wrapper my-5">
     <div class="container">
         <div class="row justify-content-center my-4">
-            <div class="col-8 col-sm-6 col-md-3">
+            <!-- <div class="col-8 col-sm-6 col-md-3">
                 <div class="photo-container">
                     <img class="rounded-circle"src="assets/img/ryan.jpg" alt="">
                 </div>
             </div>
             <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Follow me on Instagram">
                 <i class="now-ui-icons media-1_camera-compact"></i>
+            </button> -->
+            <div class="col-8 col-sm-6 col-md-3 justify-content-center">
+                <div class="photo-container">
+                    <img class="rounded-circle"src="assets/img/ryan.jpg" alt="">
+                </div>
+            </div>
+            <button class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Cambiar imagen." (click)="open( modalImage )">
+                <i class="now-ui-icons media-1_camera-compact"></i>
             </button>
+
+            <!-- Modal #modalImage name to modal open -->
+            <ng-template #modalImage let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center">Recortar imagen y guardar.</h5>
+                    <button type="button" class="close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+                        [resizeToWidth]="210" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
+                        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                    </image-cropper>
+                    <label for="file-input" class="btn btn-primary btn-round">
+                        <i class="now-ui-icons media-1_camera-compact"></i>
+                    </label>
+                    <input id="file-input" type="file" (change)="fileChangeEvent($event)"/>
+                </div>
+                <div class="modal-footer">
+                    <div class="left-side">
+                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="c('Close click')">Never mind</button>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="right-side">
+                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="c('Close click')">Delete</button>
+                    </div>
+                </div>
+            </ng-template>
         </div>
         <!-- INFORMACION PERSONAL -->
         <hr class="col-12 col-md-8">

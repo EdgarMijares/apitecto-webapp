@@ -19,8 +19,8 @@ export class LocalStorageService {
         return (localStorage.getItem(KEY)) ? localStorage.getItem(KEY) : '';
     }
 
-    getLocalStorageObject( KEY: string ) {
-        return (localStorage.getItem('token')) ? JSON.parse(localStorage.getItem('token')): '';
+    getLocalStorageObject( KEY: string ): any {
+        return (localStorage.getItem(KEY)) ? JSON.parse(localStorage.getItem(KEY)): '';
     }
 
     saveLocalStorageObject( KEY: string, OBJECT: any ) {

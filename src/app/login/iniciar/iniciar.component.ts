@@ -44,10 +44,9 @@ export class IniciarComponent implements OnInit {
     setDataLogin( form: NgForm ) {
         if (form.invalid) { return; }
         
-        if ( !form.control.pristine ) {
+        if (!form.control.pristine) {
             this.authService.loginUser( this.user )
         }
-        
     }
 
 

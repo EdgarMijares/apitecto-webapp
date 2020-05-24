@@ -7,7 +7,7 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent, children: [
-        { path: 'ingresar', component: IniciarComponent },
+        { path: '', component: IniciarComponent },
         { path: 'registro', component: NuevoComponent },
     ]}
 ];

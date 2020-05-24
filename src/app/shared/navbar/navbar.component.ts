@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CategoriasService } from 'src/app/service/service';
 
 @Component({
     selector: 'app-navbar',
@@ -10,7 +11,10 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element: ElementRef) {
+    categorias: any;
+
+    constructor(public location: Location, private element: ElementRef, categoryService: CategoriasService) {
+        this.categorias = categoryService.getAllCategorias();
         this.sidebarVisible = false;
     }
 
@@ -48,12 +52,4 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    isDocumentation() {
-        const titlee = this.location.prepareExternalUrl(this.location.path());
-        if ( titlee === '/documentation' ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
