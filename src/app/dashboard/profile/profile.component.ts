@@ -14,11 +14,16 @@ export class ProfileComponent implements OnInit {
 
     file;
     imageChangedEvent: any = '';
-    croppedImage: any = '';
+    croppedImage: any = './assets/img/ryan.jpg';
+    flagChangeImage: boolean = false;
 
     userModel: UserModel;
 
     closeResult: string;
+
+    personalFlagProfile:boolean = true;
+    personalFlagContact:boolean = true;
+
 
     constructor(private authService: AuthService, private modalService: NgbModal) { }
   
@@ -28,6 +33,17 @@ export class ProfileComponent implements OnInit {
         this.userModel.name = 'Edgar Mijares';
     }
 
+    changeFlagProfile() {
+        this.personalFlagProfile = !this.personalFlagProfile;
+    }
+    
+    changeFlagContact() {
+        this.personalFlagContact = !this.personalFlagContact;
+    }
+    
+    /**
+     * CROPPER IMAGE
+     */
     onFileChange(event) {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -41,7 +57,6 @@ export class ProfileComponent implements OnInit {
     }
 
     fileChangeEvent(event: any): void {
-        console.log(event);
         this.imageChangedEvent = event;
     }
 
@@ -69,6 +84,28 @@ export class ProfileComponent implements OnInit {
 
     imageLoaded() {
         // show cropper
+        this.flagChangeImage = true;
+        // let baseImage = new Image();
+        // baseImage.setAttribute('crossOrigin', 'anonymous');
+        // baseImage.src = './assets/img/ryan.jpg';
+
+        // return this.dataURLtoFile(baseImage, 'temp.png');
+
+        // return new Promise<string>(resolve => {
+        //     var img = new Image();
+        //     img.src = './assets/img/ryan.jpg';
+        //     img.setAttribute('crossOrigin', 'anonymous');
+        //     img.onload = (() => {
+        //         var canvas = document.createElement("canvas");
+        //         canvas.width = img.width;
+        //         canvas.height = img.height;
+        //         var ctx = canvas.getContext("2d");
+        //         ctx.drawImage(img, 0, 0);
+        //         var dataURL = canvas.toDataURL("image/png");
+        //         console.log('UgetBase64Image.dataURL ', dataURL);
+        //         resolve(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+        //     });
+        // });
     }
 
     cropperReady() {
@@ -87,7 +124,6 @@ export class ProfileComponent implements OnInit {
      */
     open(content, type) {
         if (type === 'sm') {
-            console.log('aici');
             this.modalService.open(content, { size: 'sm' }).result.then((result) => {
                 this.closeResult = `Closed with: ${result}`;
             }, (reason) => {

@@ -61,6 +61,9 @@ export class AuthErrorService {
                 this.showMessage.authError('El numero ya existe', 'Otro usuario ya utiliza el numero proporcionado.');
                 break;
             }
+            case 'auth/wrong-password': {
+                this.showMessage.authError('Contraseña incorrecta.', 'Tu contraseña no era la correcta, revisa que coincidan mayusculas y minisculas.')
+            }
 
             // BACKEND ERRORS LIST -- SAVE TO REVISIONS
             case 'auth/claims-too-large': {

@@ -11,10 +11,10 @@
             </button> -->
             <div class="col-8 col-sm-6 col-md-3 justify-content-center">
                 <div class="photo-container">
-                    <img class="rounded-circle"src="assets/img/ryan.jpg" alt="">
+                    <img class="rounded-circle" [src]="croppedImage" alt="">
                 </div>
             </div>
-            <button class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Cambiar imagen." (click)="open( modalImage )">
+            <button class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Cambiar imagen." (click)="open( modalImage, {centered:true} )">
                 <i class="now-ui-icons media-1_camera-compact"></i>
             </button>
 
@@ -26,8 +26,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+                <div class="modal-body image-upload">
+                    <img *ngIf="!flagChangeImage" class="rounded-circle" [src]="croppedImage" alt="" width="100%">
+
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [roundCropper]="true" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
                         [resizeToWidth]="210" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
                         (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
                     </image-cropper>
@@ -47,20 +49,24 @@
                 </div>
             </ng-template>
         </div>
-        <!-- INFORMACION PERSONAL -->
+        <!-- INICIO INFORMACION PERSONAL -->
         <hr class="col-12 col-md-8">
-        <div class="row">
-            <h3 class="col-12 text-center">Información personal</h3>
+        <div class="row justify-content-center">
+            <h3 class=" mt-2 text-center">
+                <span class="">Información personal</span>
+            </h3>
+            <div class="col-1">
+                <button href="#" class="btn btn-warning btn-round btn-icon mx-2 " rel="tooltip" title="Editar nombre" (click)="changeFlagProfile()">
+                    <i class="fa fa-edit"></i>
+                </button>
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="RFC">
+                    <input type="text" class="form-control" placeholder="RFC" [disabled]="personalFlagProfile" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar RFC">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -68,42 +74,41 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="nombre" [(ngModel)]="userModel.name" placeholder="Nombre">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="userModel.name" placeholder="Nombre" [disabled]="personalFlagProfile" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar nombre">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-11  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Apellido paterno">
+                    <input type="text" class="form-control" placeholder="Apellido paterno" [disabled]="personalFlagProfile" >
                 </div>
             </div>
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Apellido materno">
+                    <input type="text" class="form-control" placeholder="Apellido materno" [disabled]="personalFlagProfile" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar apellidos">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Dirección 'No. Calle, Colonia'">
+                    <input type="text" class="form-control" placeholder="Dirección 'No. Calle, Colonia'" [disabled]="personalFlagProfile" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar dirección">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
-        <!-- DATOS DE CONTACTO -->
+        <!-- FIN INFORMACION PERSONAL -->
+        <!-- INICIO DATOS DE CONTACTO -->
         <hr class="col-12 col-md-8">
-        <div class="row">
-            <h3 class="col-12 text-center">Datos de contacto</h3>
+        <div class="row justify-content-center">
+            <h3 class=" mt-2 text-center">
+                <span class="">Datos de contacto</span>
+            </h3>
+            <div class="col-1">
+                <button class="btn btn-warning btn-round btn-icon mx-2 " rel="tooltip" title="Editar nombre" (click)="changeFlagContact()">
+                    <i class="fa fa-edit"></i>
+                </button>
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -111,12 +116,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-phone"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Telefono de contacto 1">
+                    <input type="text" class="form-control" placeholder="Telefono de contacto 1" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar numero de Telefono">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -124,12 +126,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-phone"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Telefono de contacto 2">
+                    <input type="text" class="form-control" placeholder="Telefono de contacto 2" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar numero de Telefono">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -137,12 +136,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-envelope-o"></i></span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-disabled btn-round btn-icon my-1" rel="tooltip" disabled title="Editar email">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -150,23 +146,17 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-globe"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Sitio web">
+                    <input type="text" class="form-control" placeholder="Sitio web" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar instagram">
-                <i class="fa fa-edit"></i>
-            </button>
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-facebook"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Facebook">
+                    <input type="text" class="form-control" placeholder="Facebook" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar facebook">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
@@ -174,25 +164,21 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-twitter"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Twitter">
+                    <input type="text" class="form-control" placeholder="Twitter" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar twitter">
-                <i class="fa fa-edit"></i>
-            </button>
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-instagram"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Instagram">
+                    <input type="text" class="form-control" placeholder="Instagram" [disabled]="personalFlagContact" >
                 </div>
             </div>
-            <button href="#" class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Editar instagram">
-                <i class="fa fa-edit"></i>
-            </button>
         </div>
-        <!-- PORTAFOLIO -->
+        <!-- FIN DATOS DE CONTACTO -->
+
+        <!-- INICIO PORTAFOLIO -->
         <hr class="col-12 col-md-8">
         <div class="row">
             <h3 class="col-12 text-center">Portafolio</h3>
@@ -235,6 +221,8 @@
                 </div>
             </div>
         </div>
+        <!-- FIN PORTAFOLIO -->
+
     </div>
 </div>
 <!-- <div class="row">

@@ -11,8 +11,7 @@
 
 /* VARIABLES LOCALES */
 
-$gradient: $warning-color,
-$primary-color;
+$gradient: $warning-color, $primary-color;
 $radius: 10px;
 $visual-height: 68%;
 $datas-height: calc(100% - #{$visual-height} + 2px);
