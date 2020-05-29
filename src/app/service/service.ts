@@ -1,3 +1,4 @@
+export { StorageService } from './storage/storage.service';
 export { AuthSaveService } from './auth/auth-save.service';
 export { AuthService } from "./auth/auth.service";
 export { AuthErrorService } from './auth/auth-error.service';

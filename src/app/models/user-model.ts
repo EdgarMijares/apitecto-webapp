@@ -9,19 +9,26 @@ export class UserModel {
     name: string;
     lastname_p: string;
     lastname_m: string;
-    direccion: string;
+    address: string;
     email: string;
-    phone: [];
+    phone: Phone;
     website: string;
-    social: [];
+    social: Social;
     id_portfolio: string;
     password: string;
+
+    // social_model: 
+
+    constructor() {
+        this.phone = new Phone();
+        this.social = new Social();
+    }
 }
 
 class Phone {
     id_phone: string;
-    code: string;
-    number: string;
+    primary: string;
+    secondary: string;
 }
 
 class Social {

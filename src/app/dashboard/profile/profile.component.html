@@ -11,7 +11,7 @@
             </button> -->
             <div class="col-8 col-sm-6 col-md-3 justify-content-center">
                 <div class="photo-container">
-                    <img class="rounded-circle" [src]="croppedImage" alt="">
+                    <img class="rounded-circle image-fluid" [src]="croppedImage" alt="">
                 </div>
             </div>
             <button class="btn btn-warning btn-round btn-icon my-1" rel="tooltip" title="Cambiar imagen." (click)="open( modalImage, {centered:true} )">
@@ -40,11 +40,11 @@
                 </div>
                 <div class="modal-footer">
                     <div class="left-side">
-                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="c('Close click')">Never mind</button>
+                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="d('Close click')">Cancelar</button>
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="c('Close click')">Delete</button>
+                        <button type="button" class="btn btn-warning btn-round btn-icon" (click)="saveProfileImage()">Guardar</button>
                     </div>
                 </div>
             </ng-template>
@@ -56,15 +56,18 @@
                 <span class="">Información personal</span>
             </h3>
             <div class="col-1">
-                <button href="#" class="btn btn-warning btn-round btn-icon mx-2 " rel="tooltip" title="Editar nombre" (click)="changeFlagProfile()">
-                    <i class="fa fa-edit"></i>
+                <button [ngClass]="{'btn-primary': !personalFlagProfile, 'btn-warning': personalFlagProfile}" 
+                    class="btn  btn-round btn-icon mx-2 " rel="tooltip" title="Editar Información personal" (click)="changeFlagProfile()">
+                    <i [ngClass]="{'fa-save': !personalFlagProfile, 'fa-edit': personalFlagProfile}" class="fa fa-edit"></i>
                 </button>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="RFC" [disabled]="personalFlagProfile" >
+                    <input type="text" class="form-control"
+                        name="rfc" [(ngModel)]="userModel.rfc"
+                        placeholder="RFC" [disabled]="personalFlagProfile" >
                 </div>
             </div>
         </div>
@@ -74,26 +77,34 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="nombre" [(ngModel)]="userModel.name" placeholder="Nombre" [disabled]="personalFlagProfile" >
+                    <input type="text" class="form-control"
+                        name="name" [(ngModel)]="userModel.name"
+                        placeholder="Nombre" [disabled]="personalFlagProfile" >
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-11  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Apellido paterno" [disabled]="personalFlagProfile" >
+                    <input type="text" class="form-control"
+                        name="lastname_p" [(ngModel)]="userModel.lastname_p"
+                        placeholder="Apellido paterno" [disabled]="personalFlagProfile" >
                 </div>
             </div>
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Apellido materno" [disabled]="personalFlagProfile" >
+                    <input type="text" class="form-control"
+                        name="lastname_m" [(ngModel)]="userModel.lastname_m"
+                        placeholder="Apellido materno" [disabled]="personalFlagProfile" >
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="input-group form-group-no-border input-lg">
-                    <input type="text" class="form-control" placeholder="Dirección 'No. Calle, Colonia'" [disabled]="personalFlagProfile" >
+                    <input type="text" class="form-control"
+                        name="address" [(ngModel)]="userModel.address"
+                        placeholder="Dirección 'No. Calle, Colonia'" [disabled]="personalFlagProfile" >
                 </div>
             </div>
         </div>
@@ -105,8 +116,9 @@
                 <span class="">Datos de contacto</span>
             </h3>
             <div class="col-1">
-                <button class="btn btn-warning btn-round btn-icon mx-2 " rel="tooltip" title="Editar nombre" (click)="changeFlagContact()">
-                    <i class="fa fa-edit"></i>
+                <button [ngClass]="{'btn-primary': !personalFlagContact, 'btn-warning': personalFlagContact}" 
+                    class="btn  btn-round btn-icon mx-2 " rel="tooltip" title="Editar datos de contacto." (click)="changeFlagContact()">
+                    <i [ngClass]="{'fa-save': !personalFlagContact, 'fa-edit': personalFlagContact}" class="fa fa-edit"></i>
                 </button>
             </div>
         </div>
@@ -116,7 +128,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-phone"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Telefono de contacto 1" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="primary" [(ngModel)]="userModel.primary"
+                        placeholder="Telefono de contacto 1" [disabled]="personalFlagContact" >
                 </div>
             </div>
         </div>
@@ -126,7 +140,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-phone"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Telefono de contacto 2" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="secondary" [(ngModel)]="userModel.secondary"
+                        placeholder="Telefono de contacto 2" [disabled]="personalFlagContact" >
                 </div>
             </div>
         </div>
@@ -136,7 +152,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-envelope-o"></i></span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email" [disabled]="personalFlagContact" >
+                    <input type="email" class="form-control"
+                        name="email" [(ngModel)]="userModel.email"
+                        placeholder="Email" [disabled]="personalFlagContact" >
                 </div>
             </div>
         </div>
@@ -146,7 +164,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-globe"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Sitio web" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="website" [(ngModel)]="userModel.address"
+                        placeholder="Sitio web" [disabled]="personalFlagContact" >
                 </div>
             </div>
             <div class="col-10  col-md-5">
@@ -154,7 +174,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-facebook"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Facebook" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="facebook_user" [(ngModel)]="userModel.social.facebook_user"
+                        placeholder="Facebook" [disabled]="personalFlagContact" >
                 </div>
             </div>
         </div>
@@ -164,7 +186,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-twitter"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Twitter" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="twitter_user" [(ngModel)]="userModel.social.twitter_user"
+                        placeholder="Twitter" [disabled]="personalFlagContact" >
                 </div>
             </div>
             <div class="col-10  col-md-5">
@@ -172,7 +196,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">  <i class="fa fa-instagram"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Instagram" [disabled]="personalFlagContact" >
+                    <input type="text" class="form-control"
+                        name="instagram_user" [(ngModel)]="userModel.social.instagram_user"
+                        placeholder="Instagram" [disabled]="personalFlagContact" >
                 </div>
             </div>
         </div>

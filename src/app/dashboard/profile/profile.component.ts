@@ -3,8 +3,8 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { UserModel } from '../../models/user-model';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from 'src/app/service/service';
-
+import { AuthService, StorageService } from '../../service/service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -14,7 +14,8 @@ export class ProfileComponent implements OnInit {
 
     file;
     imageChangedEvent: any = '';
-    croppedImage: any = './assets/img/ryan.jpg';
+    croppedImage: any = '';
+    afterCroppedImage: any = '';
     flagChangeImage: boolean = false;
 
     userModel: UserModel;
@@ -24,13 +25,24 @@ export class ProfileComponent implements OnInit {
     personalFlagProfile:boolean = true;
     personalFlagContact:boolean = true;
 
-
-    constructor(private authService: AuthService, private modalService: NgbModal) { }
+    constructor(private authService: AuthService, private modalService: NgbModal,
+            private storage: StorageService) {
+                this.getImageProfile();
+            }
   
     ngOnInit() {
         this.userModel = new UserModel();
 
         this.userModel.name = 'Edgar Mijares';
+    }
+
+    getImageProfile() {
+        this.storage.getUrlProfileImage().subscribe(data => {
+            this.croppedImage = data;
+        },
+        () => {
+            this.croppedImage = './assets/img/default-avatar.png';
+        });
     }
 
     changeFlagProfile() {
@@ -51,9 +63,15 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    save() {
-        console.log(this.file);
+    saveProfileImage() {
         // Aqui tienes que enviar el fichero ya a la API
+        this.storage.uploadFile(this.file)
+        this.storage.uploadPercent.subscribe( percent => {
+            if (percent === 100) {
+                this.changeFlagProfile();
+                this.modalService.dismissAll('End work')
+            }
+        })
     }
 
     fileChangeEvent(event: any): void {
@@ -62,10 +80,7 @@ export class ProfileComponent implements OnInit {
 
     imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
-
-        //Usage example:
-        var file = this.dataURLtoFile(this.croppedImage, `${ this.authService.getUserID() }.png`);
-        console.log(file);
+        var file = this.dataURLtoFile(this.croppedImage, `user/${ this.authService.getUserID() }/profile/${ this.authService.getUserID() }.png`);
         this.file = file;
     }
 
@@ -85,27 +100,6 @@ export class ProfileComponent implements OnInit {
     imageLoaded() {
         // show cropper
         this.flagChangeImage = true;
-        // let baseImage = new Image();
-        // baseImage.setAttribute('crossOrigin', 'anonymous');
-        // baseImage.src = './assets/img/ryan.jpg';
-
-        // return this.dataURLtoFile(baseImage, 'temp.png');
-
-        // return new Promise<string>(resolve => {
-        //     var img = new Image();
-        //     img.src = './assets/img/ryan.jpg';
-        //     img.setAttribute('crossOrigin', 'anonymous');
-        //     img.onload = (() => {
-        //         var canvas = document.createElement("canvas");
-        //         canvas.width = img.width;
-        //         canvas.height = img.height;
-        //         var ctx = canvas.getContext("2d");
-        //         ctx.drawImage(img, 0, 0);
-        //         var dataURL = canvas.toDataURL("image/png");
-        //         console.log('UgetBase64Image.dataURL ', dataURL);
-        //         resolve(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
-        //     });
-        // });
     }
 
     cropperReady() {
@@ -118,7 +112,6 @@ export class ProfileComponent implements OnInit {
     }
 
     /**
-     * 
      * @param content 
      * @param type 
      */
@@ -131,15 +124,15 @@ export class ProfileComponent implements OnInit {
             });
         } else {
             this.modalService.open(content).result.then((result) => {
-                this.closeResult = `Closed with: ${result}`;
+                this.closeResult = `Closed with: ${result}`;                
             }, (reason) => {
                 this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             });
         }
     }
 
-    private getDismissReason(reason: any): string {
-        if (reason === ModalDismissReasons.ESC) {
+    private getDismissReason(reason: any): string {        
+        if (reason === ModalDismissReasons.ESC) {            
             return 'by pressing ESC';
         } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
             return 'by clicking on a backdrop';

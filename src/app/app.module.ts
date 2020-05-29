@@ -4,12 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-
-// ANGUALR FIRE IMPORTS
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore'
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +20,8 @@ import { LandingModule } from './landing/landing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 import { InterceptorProviders } from './interceptor/intercepeptor.class';
+import { environment } from 'src/environments/environment';
+import { FirebaseLocalModule } from './firebase-local.module';
 
 @NgModule({
     declarations: [
@@ -43,12 +39,10 @@ import { InterceptorProviders } from './interceptor/intercepeptor.class';
         FormsModule,
         RouterModule,
         AppRoutingModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireAuthModule,
-        AngularFirestoreModule,
         ExamplesModule,
         BrowserAnimationsModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        FirebaseLocalModule
     ],
     providers: [
         // INTERCEPTORS

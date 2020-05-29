@@ -11,6 +11,8 @@ import { ComponentsModule } from '../components/components.module';
 import { DashboardComponent } from './dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { environment } from 'src/environments/environment';
+
 @NgModule({
     declarations: [
         DashboardComponent,
@@ -22,7 +24,9 @@ import { ProfileComponent } from './profile/profile.component';
         SharedModule,
         ComponentsModule,
         DashboardRoutingModule,
-        ImageCropperModule
+        ImageCropperModule,
+    ],
+    providers: [
     ]
 })
 

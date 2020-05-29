@@ -193,6 +193,11 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
     }
 }
 
+.image-fluid {
+    width: 100% !important;
+    height: auto !important;
+}
+
 .cursor-pointer {
     cursor: pointer !important;
 }
