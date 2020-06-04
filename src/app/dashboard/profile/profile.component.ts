@@ -3,15 +3,21 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { UserModel } from '../../models/user-model';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService, StorageService } from '../../service/service';
+import { AuthService, StorageService, DataSaveService } from '../../service/service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { DataQueryService } from 'src/app/service/data-query.service';
+
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styles: []
 })
+
 export class ProfileComponent implements OnInit {
 
+    /**
+    * 	@var declaration
+    */
     file;
     imageChangedEvent: any = '';
     croppedImage: any = '';
@@ -26,13 +32,20 @@ export class ProfileComponent implements OnInit {
     personalFlagContact:boolean = true;
 
     constructor(private authService: AuthService, private modalService: NgbModal,
-            private storage: StorageService) {
+            private storage: StorageService, private dataSave: DataSaveService,
+            private dbQuery: DataQueryService) {
                 this.getImageProfile();
             }
   
     ngOnInit() {
         this.userModel = new UserModel();
 
+        this.dbQuery.userData(this.authService.getUserID()).subscribe( (user: any) => {
+            console.log(user);
+            this.userModel = user;
+            if (user.length > 0) {
+            }
+        })
         this.userModel.name = 'Edgar Mijares';
     }
 
@@ -47,6 +60,13 @@ export class ProfileComponent implements OnInit {
 
     changeFlagProfile() {
         this.personalFlagProfile = !this.personalFlagProfile;
+        let temp = {};
+        if(this.personalFlagProfile === true) {
+            this.dataSave.setUserDataBase(this.authService.getUserID(), this.userModel, 'update')
+        } else {
+            temp = this.userModel;
+        }
+        
     }
     
     changeFlagContact() {

@@ -45,8 +45,8 @@ export class AuthService {
             this.dataSave.saveUserDataBase(userStatus.user.uid, user);
             userStatus.user.getIdTokenResult().then( data => {
                 this.localSave.saveLocalStorageObject('token', data)
+                this.route.navigate(['/dashboard']);
             })
-            this.route.navigate(['/dashboard']);
         })
         .catch( err => {            
             this.errorMessage.showUserErrorMessageAuthService(err.code)
