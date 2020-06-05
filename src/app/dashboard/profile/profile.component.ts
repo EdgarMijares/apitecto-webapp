@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { UserModel } from '../../models/user-model';
+import { UserModel, SocialModel } from '../../models/user-model';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService, StorageService, DataSaveService } from '../../service/service';
@@ -40,13 +40,9 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         this.userModel = new UserModel();
 
-        this.dbQuery.userData(this.authService.getUserID()).subscribe( (user: any) => {
-            console.log(user);
+        this.dbQuery.userData().subscribe( (user: UserModel) => {
             this.userModel = user;
-            if (user.length > 0) {
-            }
-        })
-        this.userModel.name = 'Edgar Mijares';
+        });
     }
 
     getImageProfile() {
@@ -60,17 +56,18 @@ export class ProfileComponent implements OnInit {
 
     changeFlagProfile() {
         this.personalFlagProfile = !this.personalFlagProfile;
-        let temp = {};
+        // let temp = {};
         if(this.personalFlagProfile === true) {
-            this.dataSave.setUserDataBase(this.authService.getUserID(), this.userModel, 'update')
-        } else {
-            temp = this.userModel;
+            this.dataSave.setUserDataBase(this.userModel, 'update');
         }
         
     }
     
     changeFlagContact() {
         this.personalFlagContact = !this.personalFlagContact;
+        if (this.personalFlagContact === true) {
+            this.dataSave.setUserDataBase(this.userModel, 'update');
+        }
     }
     
     /**
@@ -88,7 +85,7 @@ export class ProfileComponent implements OnInit {
         this.storage.uploadFile(this.file)
         this.storage.uploadPercent.subscribe( percent => {
             if (percent === 100) {
-                this.changeFlagProfile();
+                // this.changeFlagProfile();
                 this.modalService.dismissAll('End work')
             }
         })

@@ -6,25 +6,24 @@ export class UserTestModel {
 let regexFacebook = '(?:https?:\/\/)?(?:www\.)?(mbasic.facebook|m\.facebook|facebook|fb)\.(com|me)\/(?:(?:\w\.)*#!\/)?(?:pages\/)?(?:[\w\-\.]*\/)*([\w\-\.]*(\s\S)*)(?:\/*)?';
 
 export class UserModel {
-    id_user?: string;
+    id?: string;
     rfc?: string;
     name?: string;
     lastname_p?: string;
     lastname_m?: string;
     address?: string;
+    password?: string;
+    
+    // SOCIAL: 
     email?: string;
     phone?: string;
     website?: string;
-    social?: Social;
+    facebook?: string;
+    twitter?: string;
+    instagram?: string;
+    
+    // PORTFOLIO
     id_portfolio?: string;
-    password?: string;
-
-    // social_model: 
-
-    constructor() {
-        // this.phone = new Phone();
-        this.social = new Social();
-    }
 }
 
 class Phone {
@@ -33,7 +32,7 @@ class Phone {
     secondary: string;
 }
 
-class Social {
+export class SocialModel {
     id_social: string;
     facebook_user: string;
     twitter_user: string;

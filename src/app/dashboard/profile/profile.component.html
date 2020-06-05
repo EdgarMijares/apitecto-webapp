@@ -109,6 +109,7 @@
             </div>
         </div>
         <!-- FIN INFORMACION PERSONAL -->
+
         <!-- INICIO DATOS DE CONTACTO -->
         <hr class="col-12 col-md-8">
         <div class="row justify-content-center">
@@ -134,18 +135,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row justify-content-center">
-            <div class="col-10  col-md-5">
-                <div class="input-group form-group-no-border input-lg">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">  <i class="fa fa-phone"></i></span>
-                    </div>
-                    <input type="text" class="form-control"
-                        name="secondary" [(ngModel)]="userModel.phone.secondary"
-                        placeholder="Telefono de contacto 2" [disabled]="personalFlagContact" >
-                </div>
-            </div>
-        </div> -->
         <div class="row justify-content-center">
             <div class="col-10  col-md-5">
                 <div class="input-group form-group-no-border input-lg">
@@ -175,7 +164,7 @@
                         <span class="input-group-text">  <i class="fa fa-facebook"></i></span>
                     </div>
                     <input type="text" class="form-control"
-                        name="facebook_user" [(ngModel)]="userModel.social.facebook_user"
+                        name="facebook_user" [(ngModel)]="userModel.facebook"
                         placeholder="Facebook" [disabled]="personalFlagContact" >
                 </div>
             </div>
@@ -187,7 +176,7 @@
                         <span class="input-group-text">  <i class="fa fa-twitter"></i></span>
                     </div>
                     <input type="text" class="form-control"
-                        name="twitter_user" [(ngModel)]="userModel.social.twitter_user"
+                        name="twitter_user" [(ngModel)]="userModel.twitter"
                         placeholder="Twitter" [disabled]="personalFlagContact" >
                 </div>
             </div>
@@ -197,7 +186,7 @@
                         <span class="input-group-text">  <i class="fa fa-instagram"></i></span>
                     </div>
                     <input type="text" class="form-control"
-                        name="instagram_user" [(ngModel)]="userModel.social.instagram_user"
+                        name="instagram_user" [(ngModel)]="userModel.instagram"
                         placeholder="Instagram" [disabled]="personalFlagContact" >
                 </div>
             </div>
@@ -251,29 +240,3 @@
 
     </div>
 </div>
-<!-- <div class="row">
-    <div class="image-upload">
-        <label for="file-input" class="btn btn-primary btn-round">
-            <i class="now-ui-icons media-1_camera-compact"></i>
-        </label>
-        <input id="file-input" type="file" (change)="fileChangeEvent($event)"/>
-    </div>
-</div>
-<div class="row">
-    <div class="col-4 justify-content-center">
-        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
-            [resizeToWidth]="200" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
-            (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
-        </image-cropper>
-    </div>
-    <div class="col-sm-6 col-lg-4">
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <img [src]="croppedImage" />
-    </div>
-    <div class="col-3">
-        <button class="btn btn-primary btn-round col-12" (click)="save()">Guardar cambios</button>
-    </div>
-</div> -->
