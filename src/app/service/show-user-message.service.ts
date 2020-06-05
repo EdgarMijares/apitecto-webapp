@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { ErrorModel } from '../models/models';
-import { AuthSaveService } from './auth/auth-save.service';
 
 import Swal from 'sweetalert2';
+import { ErrorSaveService } from './error/error-save.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowUserMessageService {
 
-    constructor(private dbSave: AuthSaveService) { }
+    constructor(private dbSave: ErrorSaveService) { }
 
     succes(title, message) {
         Swal.fire(title, message, 'success');

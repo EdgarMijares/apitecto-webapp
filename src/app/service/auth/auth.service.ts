@@ -14,6 +14,7 @@ import { UserModel } from '../../models/models';
 import { AuthErrorService } from './auth-error.service';
 import { DataSaveService } from '../data-save.service';
 import { LocalStorageService } from '../local-storage.service';
+import { AuthSaveService } from './auth-save.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class AuthService {
      */
     constructor( private authUser: AngularFireAuth, 
             private errorMessage: AuthErrorService,
-            private dataSave: DataSaveService, 
+            private dataSave: AuthSaveService, 
             private localSave: LocalStorageService,
             private route: Router ) {
     }

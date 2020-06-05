@@ -3,15 +3,18 @@ import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore'
 import { UserModel } from '../models/models';
 import { Observable, Subscriber } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataQueryService {
 
-    constructor(private dbQuery: AngularFirestore) { }
+    private ID_USER = this.auth.getUserID();
 
-    userProfileData(ID_USER: string): Observable<DocumentChangeAction<UserModel>[]>{
+    constructor(private dbQuery: AngularFirestore, private auth: AuthService) { }
+
+    userProfileData(): Observable<DocumentChangeAction<UserModel>[]>{
         return this.dbQuery.collection<any>('data_users').snapshotChanges()
         .pipe( map( action => action.map( _ => {
             const object = _.payload.doc.data();
@@ -19,21 +22,16 @@ export class DataQueryService {
         }) ))
     }
 
-    userData(ID_USER: string) {
-        return this.dbQuery.collection('data_users').doc(ID_USER)
+    userData() {
+        return this.dbQuery.collection<UserModel>('data_users').doc(this.ID_USER)
         .snapshotChanges().pipe(
             map( this.documentToDomainObject ));
     }
-
-    // collectionToDomainObject = _ => {
-    //     const object = _.payload.doc.data();
-    //     object.id = _.payload.doc.id;
-    //     return object;
-    // }
 
     documentToDomainObject = _ => {
         const object = _.payload.data();
         // object.id = _.payload.id;
         return object;
     }
+
 }
